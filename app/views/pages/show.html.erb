@@ -1,0 +1,30 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+	<h1><span class="tag tag-success"><%= @page.events.count %></span> <%= @page.name %> </h1>
+	<%=link_to @page.facebook_link, @page.facebook_link %>
+	Last update: <%= time_ago_in_words @page.updated_at %> ago!
+			
+			
+	<p>	<%if @page.categories.any? %>
+		<%@page.categories.each do |c|%>
+		<span class="tag tag-default"><%= c.name %></span>
+		<%end%>
+		<%end%>
+	</p>
+	<br />
+			
+	<hr />
+	<h5>Active Events:</h5>
+</p>
+
+<% if @page.events.empty? %>
+<h5>Events are empty! Please wait till we import the new ones!</h5>
+<% else %>
+<%= render partial: "events/events", locals: { events: @page.events } %>
+<% end %>
+
+<hr /><%= link_to 'Edit', edit_page_path(@page), class: "btn btn-secondary" %>
+<%= link_to 'Back', pages_path, class: "btn btn-secondary" %>
+<%= link_to 'Import Events', import_page_path(@page), class: "btn btn-secondary" %>

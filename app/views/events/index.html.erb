@@ -1,0 +1,82 @@
+<!-- <div class="form-group pull-xs-right">
+	<%= time_zone_select( "user", "time_zone", nil, :default => "Athens" ) %>
+</div> -->
+
+<br />
+
+<p><%= link_to new_page_path, class: "btn btn-success pull-xs-right" do %>  
+<i class="fa fa-plus-circle" aria-hidden="true"></i>
+Add New Page
+<% end %>  
+
+</p>
+
+<p id="notice"><%= notice %></p>
+
+<br />
+
+<%= month_calendar events: @calendar do |date, events| %>
+<% current_date =  date == @today%>
+<% current_date_style =  current_date ?  "success" : "secondary"%>
+<% current_date_span = current_date ?  "white_success" : ""%>
+<% disabled_link = @date.month.to_s == date.month.to_s ?  "" : "disabled"%>
+
+<%=link_to events_path(
+for_date: date, 
+location: params[:location]), 
+class: "btn btn-#{current_date_style} #{disabled_link} event", 
+:data => { :toggle => 'tooltip', :placement => 'right' }, 
+title: events.first(5).pluck(:name).join(" | ")  do %>
+  <%= date.to_s(:short) %>
+  <%if events.any? %>
+	  <span class="tag tag-success <%= current_date_span %> "><%= events.size %></span>	  
+  <%end%>
+  <%end%>
+<% end %>
+
+
+<br />
+
+<h3 class="bold-title">
+	<%= @date_is_today ? "Today - " :  ""%> <%= @date.strftime("%A %d %B") %> 
+	<small class="bold-title__side">// <%= @events.count %> Events</small>
+</h3> 
+<%= render partial: "events/events", locals: { events: @events } %>
+
+
+<script type="text/javascript">
+function geoFindMe() {
+  var output = document.getElementById("location");
+  var  params = "<%= params[:for_date] || params[:start_date] %>";
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    output.innerHTML = '<p>Events for ' + latitude + '°, ' + longitude + '°</p>';
+	window.location = "<%= events_path %>?location="+latitude+ ","+longitude ;
+
+  };
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  };
+
+  output.innerHTML = "<p>Locating…</p>";
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+</script>
+<hr />
+
+
+<div id="location" class="center"></div>
+<a class="btn btn-secondary" onclick="geoFindMe()">
+	<i class="fa fa-location-arrow" aria-hidden="true"></i>
+	Based on my Location
+</a> 
+
+<%=link_to events_path(location: params[:location]), class: "btn btn-secondary" do %>
+<i class="fa fa-list-alt" aria-hidden="true"></i>
+Today's events
+<%end  %>
+<br /><br /><br />

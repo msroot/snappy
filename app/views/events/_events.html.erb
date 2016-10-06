@@ -1,0 +1,43 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>Cover</th>
+			<th>Name</th>
+			<th>Start at</th>
+			<th>End at</th>
+			<th>Posted by</th>
+			<th>Place</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% events.each do |event| %>
+		<tr>
+			<td>
+			<%=image_tag event.cover_url, width: "120px", height: "46px"%>
+			</td>
+			<td>
+				<%= link_to event.name,  event%>				
+			</td>
+			<td><%= event.start_time.to_s(:short) if event.start_time%></td>
+			<td><%= event.end_time.to_s(:short) if event.end_time%></td>
+			<td><%= link_to event.page.name, event.page %></td>
+			<td>
+				<% if event.place %>
+				<%= link_to event.place.name, event, :data => { :toggle => 'tooltip', :placement => 'top' }, title: event.place.try(:location).try(:address)  %>
+				<% end %>
+				
+			</td>
+			</button>
+			
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>

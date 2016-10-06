@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Facebook</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td>
+			<span class="tag tag-success"><%= page.events.count %></span>
+			<%= link_to page.name, page %></td>
+        <td>
+			<%=link_to page.fb_id, "https://www.facebook.com/#{page.fb_id}" %>
+		</td>
+        <!-- <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Page', new_page_path, class: "btn btn-secondary" %>
+<%= link_to 'Import All', import_all_pages_path, class: "btn btn-secondary" %>
