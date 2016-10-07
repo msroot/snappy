@@ -23,8 +23,10 @@
 
 
 .white_success{
-	color: #40D7B5;
-	background-color: #fff;
+//	color: #40D7B5;
+//	background-color: #fff;
+		background-color: white!important;
+    color: #40D7B5;
 }
 
 .event{
@@ -45,12 +47,9 @@ body {
 }
 
 
- a:hover, a {
-    color: #0af;
-}
-
-a:hover, a {
+a:hover, a, a:active {
     text-decoration: none;
+		color: #0af;
 }
 
 
@@ -69,13 +68,23 @@ a:hover, a {
 }
 
 .tag-success {
-	background-color: #CA4A8A;
+//	background-color: #CA4A8A;
+	background-color: #40D7B5;
 }
 
-.btn.btn-success{
-  background-color: #40D7B5;
-  border-color: #40D7B5;
+.btn-success, .btn-success:focus, .btn-success:active, .btn-success:hover{
+  background-color: #40D7B5!important;
+  border-color: #40D7B5!important;
 }
+
+.btn-success:active,{
+  background-color: #4bccaf!important;
+  border-color: #4bccaf!important;
+}
+
+
+
+
 
 .navbar-nav .nav-item {
 	&+.nav-item {

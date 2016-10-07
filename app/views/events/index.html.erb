@@ -25,7 +25,7 @@ Add New Page
 for_date: date, 
 location: params[:location]), 
 class: "btn btn-#{current_date_style} #{disabled_link} event", 
-:data => { :toggle => 'tooltip', :placement => 'right' }, 
+:data => { :toggle => 'tooltip', :placement => 'top' }, 
 title: events.first(5).pluck(:name).join(" | ")  do %>
   <%= date.to_s(:short) %>
   <%if events.any? %>
