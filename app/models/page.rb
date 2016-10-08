@@ -14,7 +14,7 @@ class Page < ApplicationRecord
   has_many :events, dependent: :destroy
   validates :name, presence: true
   validates :fb_id, presence: true
-  validates_uniqueness_of :fb_id, :message => "Page has already been added"
+  validates_uniqueness_of :fb_id, :message => "Page has been added already"
 
   has_many :page_categories  
   has_many :categories, :through => :page_categories

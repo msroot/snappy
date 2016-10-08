@@ -1,8 +1,6 @@
 <%= form_for(page) do |f| %>
   <% if page.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger" role="alert">
-      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-warning" role="alert">
       <ul>
       <% page.errors.full_messages.each do |message| %>
         <li><%= message %></li>
