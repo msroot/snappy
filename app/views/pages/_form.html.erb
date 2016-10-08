@@ -1,4 +1,3 @@
-
 <%= form_for(page) do |f| %>
   <% if page.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
@@ -21,10 +20,12 @@
 
 <div class="form-group">
     <%= f.label "Facebook Page URL:"%>
-    <%= f.text_field :origin_url, 
+    <%= 
+		f.text_field :origin_url, 
 		class: "form-control", 
 		placeholder: "https://www.facebook.com/example_page", 
 		type: :url , 
+		value: params[:url], 
 		pattern: "^https:\/\/www.facebook.com\/(.*)$", 
 		title: "Should be a valid facebook page url"
  %>
@@ -36,3 +37,12 @@
   </div>
 <% end %>
 
+
+
+<% if params[:url] %>
+<script type="text/javascript">
+$(function () {
+	$("#new_page").submit()
+})
+</script> 
+<% end %>
