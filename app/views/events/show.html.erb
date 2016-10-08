@@ -1,3 +1,12 @@
+<%= content_for(:title){ @event.name } %>
+<%= content_for(:meta_title){ @event.name } %>
+<%= content_for(:meta_image){ @event.cover_url } if @event.cover_url%>
+
+
+
+
+
+
 <p id="notice"><%= notice %></p>
 
 <div class="event-cover" style="text-align: center; background-image: url('<%= @event.cover_url %>'); background-position: <%= "#{@event.cover_offset_x}%" %> <%= "#{@event.cover_offset_y}%" %>;">

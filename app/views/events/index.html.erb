@@ -3,7 +3,7 @@
 </div> -->
 <!-- <p id="notice"><%= notice %></p> -->
 
-<%= render partial: "events/carousel", locals: { events: @events } %>
+<%= render partial: "events/carousel", locals: { events: @events.first(10) } %>
 <br />
 <p><%= link_to new_page_path, class: "btn btn-success pull-xs-right" do %>  
 <i class="fa fa-plus-circle" aria-hidden="true"></i>
