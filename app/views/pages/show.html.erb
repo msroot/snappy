@@ -22,7 +22,7 @@
 <% if @page.events.empty? %>
 <h5>Events are empty! Please wait till we import the new ones!</h5>
 <% else %>
-<%= render partial: "events/events", locals: { events: @page.events } %>
+<%= render partial: "events/list", locals: { events: @page.events } %>
 <% end %>
 
 <hr /><%= link_to 'Edit', edit_page_path(@page), class: "btn btn-secondary" %>
