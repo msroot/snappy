@@ -1,19 +1,17 @@
 <!-- <div class="form-group pull-xs-right">
 	<%= time_zone_select( "user", "time_zone", nil, :default => "Athens" ) %>
 </div> -->
+<!-- <p id="notice"><%= notice %></p> -->
 
+<%= render partial: "events/carousel", locals: { events: @events } %>
 <br />
-
 <p><%= link_to new_page_path, class: "btn btn-success pull-xs-right" do %>  
 <i class="fa fa-plus-circle" aria-hidden="true"></i>
 Add New Page
 <% end %>  
-
 </p>
-
-<p id="notice"><%= notice %></p>
-
 <br />
+
 
 <%= month_calendar events: @calendar do |date, events| %>
 <% current_date =  date == @today%>
@@ -41,7 +39,7 @@ title: events.first(5).pluck(:name).join(" | ")  do %>
 	<%= @date_is_today ? "Today - " :  ""%> <%= @date.strftime("%A %d %B") %> 
 	<small class="bold-title__side">// <%= @events.count %> Events</small>
 </h3> 
-<%= render partial: "events/events", locals: { events: @events } %>
+<%= render partial: "events/list", locals: { events: @events } %>
 
 
 <script type="text/javascript">

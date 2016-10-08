@@ -1,4 +1,4 @@
-<table class="table">
+ <table class="table">
 	<thead>
 		<tr>
 			<th>Cover</th>
@@ -17,7 +17,7 @@
 			<%=image_tag event.cover_url, width: "120px", height: "46px"%>
 			</td>
 			<td>
-				<%= link_to event.name,  event%>				
+				<%= link_to event.name,  event%>
 			</td>
 			<td><%= event.start_time.to_s(:short) if event.start_time%></td>
 			<td><%= event.end_time.to_s(:short) if event.end_time%></td>
@@ -26,10 +26,10 @@
 				<% if event.place %>
 				<%= link_to event.place.name, event, :data => { :toggle => 'tooltip', :placement => 'top' }, title: event.place.try(:location).try(:address)  %>
 				<% end %>
-				
+
 			</td>
 			</button>
-			
+
 		</tr>
 		<% end %>
 	</tbody>
@@ -40,4 +40,4 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-</script>
+</script> 
