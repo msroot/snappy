@@ -23,9 +23,18 @@ class Event < ApplicationRecord
   validates_uniqueness_of :fb_id
 
   def self.default_scope 
-      order('start_time DESC')
+    order('start_time DESC')
   end
 
+  def human_end_time
+    date_for_humans end_time if end_time.present?
+  end
+  
+    
+  def human_start_time
+    date_for_humans start_time if start_time.present?
+  end
+  
   def to_param  
     place_name  = place.present? ? "-at-#{place.name.to_slug.normalize.to_s}" : ""
     "#{id}-#{name.to_slug.normalize.to_s}#{place_name}"
@@ -44,5 +53,16 @@ class Event < ApplicationRecord
   def self.delete_expired
     Event.where('end_time < ?', Time.now.beginning_of_month).destroy_all
     Event.where('start_time < ?', Time.now.beginning_of_month).destroy_all
+  end
+  
+  private
+  def date_for_humans date
+    if date.today?
+      "Today #{date.strftime("at %I:%M%p")}"
+    elsif date.to_date == Date.current.tomorrow
+      "Tomorrow #{date.strftime("at %I:%M%p")}" 
+    else
+      date.to_s(:short)
+    end        
   end
 end

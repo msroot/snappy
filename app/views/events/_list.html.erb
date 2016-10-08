@@ -19,8 +19,8 @@
 			<td>
 				<%= link_to event.name,  event%>
 			</td>
-			<td><%= event.start_time.to_s(:short) if event.start_time%></td>
-			<td><%= event.end_time.to_s(:short) if event.end_time%></td>
+			<td><%= event.human_start_time %></td>
+			<td><%= event.human_end_time%></td>
 			<td><%= link_to event.page.name, event.page %></td>
 			<td>
 				<% if event.place %>
