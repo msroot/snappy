@@ -48,6 +48,11 @@ class PagesController < ApplicationController
     end
     
     object = JSON.parse(response.body, object_class: OpenStruct)
+    
+    if @page = Page.find_by_fb_id(object.id)
+      redirect_to @page, notice: "Page allready added" and return
+    end
+    
         
     @page = Page.new(origin_url: origin_url, name: object.name, fb_id: object.id)
 
