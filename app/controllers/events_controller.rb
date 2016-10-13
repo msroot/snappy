@@ -14,8 +14,6 @@
      if params[:start_date] 
       @date = Chronic.parse(params[:start_date]).to_date
     end
-    
-
 
     # @events = Event.includes(:place, :page).where("start_time <= ? AND end_time >= ? ", @date, @date)
     # @events = Event.includes(:place, :page).where("DATE(start_time) <= ? AND DATE(end_time) >= ? ", @date, @date)
@@ -59,6 +57,12 @@
       }
       
     end
+    
+    # only active
+    # todo: check if nil
+    # @events = @events.select {|e|
+    #      e.end_time.to_date >= Time.now.to_date
+    #     }
     
     @date_is_today = @date.to_date == Time.now.to_date
   end
