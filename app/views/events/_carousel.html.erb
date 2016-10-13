@@ -7,17 +7,18 @@
 	</ol>
 	<div class="carousel-inner" role="listbox">
 		<% events.each_with_index do |e, i| %>
-			
+		
 			<div class="carousel-item <%= "active"  if 0 == i%>">
-  
-
+				<%= link_to e do %>			
 			<div class="event-cover" style="text-align: center; background-image: url('<%= e.cover_url %>'); background-position: <%= "#{e.cover_offset_x}%" %> <%= "#{e.cover_offset_y}%" %>;">
 			</div>				
 			
 			<div class="carousel-caption">
-				<p><%= link_to "#{e.name} (#{e.place.name})", e, class: "carousel-link" %></p>
+				<p><%= "#{e.name} (#{e.place.name})"%></p>
 			</div>
+			<% end %>
 		</div>
+		
 		<% end %>
     
 
