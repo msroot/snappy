@@ -37,23 +37,24 @@ yield(:meta_image).present? ? yield(:meta_image) : URI.join(root_url, image_path
 				&#9776;
 			</button>
 			<div class="collapse navbar-toggleable-xs" id="navbar-header">
-				<a class="navbar-brand" href="/">
+				<!-- <a class="navbar-brand" href="/">
 					<%=image_tag "snappy-logo.png", width: "160"%>
-					<!--  -->
-				</a>
+				</a> -->
 				<ul class="nav navbar-nav pull-xs-right">
 					<!-- <li class="nav-item active">
 						<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-						</li> -->
+						</li> 
 						<li class="nav-item">
 							<a class="nav-link" href="<%= pages_path(ref:'top')%>">Pages</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="<%= events_path(ref:'top')%>">Events</a>
 						</li>
+						-->
 					</ul>
 				</div>
 			</nav> <!-- /navbar -->
+
 				<%= yield %>
 
 		</div> <!-- /container -->

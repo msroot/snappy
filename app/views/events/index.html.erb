@@ -3,35 +3,30 @@
 </div> -->
 <!-- <p id="notice"><%= notice %></p> -->
 
-<%= render partial: "events/carousel", locals: { events: @events.shuffle.first(10) } %>
-<br />
-<p><%= link_to new_page_path, class: "btn btn-success pull-xs-right" do %>  
-<i class="fa fa-plus-circle" aria-hidden="true"></i>
-Add New Page
-<% end %>  
-</p>
+<!-- <%= render partial: "events/carousel", locals: { events: @events.shuffle.first(10) } %> -->
+
 <br />
 
 
-<%= month_calendar events: @calendar do |date, events| %>
+<!-- <%= month_calendar events: @calendar do |date, events| %>
 <% current_date =  date == @today%>
 <% current_date_style =  current_date ?  "success" : "secondary"%>
 <% current_date_span = current_date ?  "white_success" : ""%>
 <% disabled_link = @date.month.to_s == date.month.to_s ?  "" : "disabled"%>
 
 <%=link_to events_path(
-for_date: date, 
-location: params[:location]), 
-class: "btn btn-#{current_date_style} #{disabled_link} event", 
-:data => { :toggle => 'tooltip', :placement => 'top' }, 
+for_date: date,
+location: params[:location]),
+class: "btn btn-#{current_date_style} #{disabled_link} event",
+:data => { :toggle => 'tooltip', :placement => 'top' },
 title: events.first(5).pluck(:name).join(" | ")  do %>
   <%= date.to_s(:short) %>
   <%if events.any? %>
-	  <span class="tag tag-success <%= current_date_span %> "><%= events.size %></span>	  
+	  <span class="tag tag-success <%= current_date_span %> "><%= events.size %></span>
   <%end%>
   <%end%>
 <% end %>
-
+ -->
 
 <br />
 
@@ -73,8 +68,14 @@ function geoFindMe() {
 	Based on my Location
 </a> 
 
-<%=link_to events_path(location: params[:location]), class: "btn btn-secondary" do %>
+<!-- <%=link_to events_path(location: params[:location]), class: "btn btn-secondary" do %>
 <i class="fa fa-list-alt" aria-hidden="true"></i>
 Today's events
-<%end  %>
+<%end  %> -->
+
+<%= link_to new_page_path, class: "btn btn-secondary" do %>  
+<i class="fa fa-plus-circle" aria-hidden="true"></i>
+Add New Page
+<% end %>  
+
 <br /><br /><br />
