@@ -21,10 +21,8 @@ class Event < ApplicationRecord
   belongs_to :page
   belongs_to :place
   validates_uniqueness_of :fb_id
-
-  def self.default_scope 
-    order('start_time DESC')
-  end
+  
+  default_scope { order(start_time: 'ASC') }
 
   def human_end_time
     date_for_humans end_time if end_time.present?

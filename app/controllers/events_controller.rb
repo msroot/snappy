@@ -59,6 +59,7 @@
       }
       
     end
+    @events = @events.order('start_time ASC')
     
     @date_is_today = @date.to_date == Time.now.to_date
   end

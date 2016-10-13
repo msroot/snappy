@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+TODO:
+Get user like for suggestions
+https://graph.facebook.com/v2.8/554641525/likes?access_token=#{token}
