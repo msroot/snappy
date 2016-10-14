@@ -28,7 +28,7 @@ yield(:meta_image).present? ? yield(:meta_image) : URI.join(root_url, image_path
 <meta property="og:site_name" content="Snappy"/>
 
 	
-	<!-- <%= yield(:title) %> -->
+
 </head>
 <body>
 	<!-- <div class="loader">
@@ -42,7 +42,7 @@ yield(:meta_image).present? ? yield(:meta_image) : URI.join(root_url, image_path
 		</div>
 		
 	
-	<div class="container">
+	<div class="container" style="<%= yield(:body_style) %>">
 		<!-- <nav class="navbar navbar-light bg-faded">
 			<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
 				&#9776;
