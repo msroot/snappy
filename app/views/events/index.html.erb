@@ -34,7 +34,34 @@ title: events.first(5).pluck(:name).join(" | ")  do %>
 <%= render partial: "events/list", locals: { events: @events } %>
 
 
+
+
+<style type="text/css" media="screen">
+/*.loader {
+	display: none;
+ position: fixed; left: 0; top: 0; z-index: 999; width: 100%; height: 100%; overflow: visible;
+ background: #8c8c8c;
+     color: white;
+     font-size: 90px;
+     text-align: center;
+     padding: 10%;
+}
+
+*/
+		
+</style>
+
 <script type="text/javascript">
+
+$( document ).ready(function() {
+	<%unless params[:location]%>
+	$("#loader-wrapper").fadeIn("fast");
+	// geoFindMe();
+<%end%>
+});
+
+
+
 function geoFindMe() {
   var output = document.getElementById("location");
   var  params = "<%= params[:for_date] || params[:start_date] %>";

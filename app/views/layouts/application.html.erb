@@ -31,6 +31,17 @@ yield(:meta_image).present? ? yield(:meta_image) : URI.join(root_url, image_path
 	<!-- <%= yield(:title) %> -->
 </head>
 <body>
+	<!-- <div class="loader">
+		<i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i>
+		Locating…</div> -->
+		
+		
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+			<div class="loader-section">Locating…</div>
+		</div>
+		
+	
 	<div class="container">
 		<!-- <nav class="navbar navbar-light bg-faded">
 			<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
