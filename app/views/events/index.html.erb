@@ -64,34 +64,28 @@ $( document ).ready(function() {
 
 
 function geoFindMe() {
-  var output = document.getElementById("location");
-  var  params = "<%= params[:for_date] || params[:start_date] %>";
-
-  function success(position) {
+	function success(position) {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
-
-    output.innerHTML = '<p>Events for ' + latitude + '°, ' + longitude + '°</p>';
 	window.location = "<%= events_path %>?location="+latitude+ ","+longitude ;
 
   };
 
   function error() {
-    output.innerHTML = "Unable to retrieve your location";
+		$("#locating").html("Unable to retrieve your location");
   };
-
-  output.innerHTML = "<p>Locating…</p>";
+	
   navigator.geolocation.getCurrentPosition(success, error);
 }
 </script>
 <hr />
 
 
-<div id="location" class="center"></div>
+<!-- <div id="location" class="center"></div>
 <a class="btn btn-secondary" onclick="geoFindMe()">
 	<i class="fa fa-location-arrow" aria-hidden="true"></i>
 	Based on my Location
-</a> 
+</a>  -->
 
 <!-- <%=link_to events_path(location: params[:location]), class: "btn btn-secondary" do %>
 <i class="fa fa-list-alt" aria-hidden="true"></i>
