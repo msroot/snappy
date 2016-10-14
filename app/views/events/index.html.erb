@@ -56,7 +56,7 @@ title: events.first(5).pluck(:name).join(" | ")  do %>
 $( document ).ready(function() {
 	<%unless params[:location]%>
 	$("#loader-wrapper").fadeIn("fast");
-	// geoFindMe();
+	geoFindMe();
 <%end%>
 });
 
