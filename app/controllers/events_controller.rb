@@ -66,9 +66,9 @@
     
     @date_is_today = @date.to_date == Time.now.to_date
     response.headers['X-Collection-Count'] = @events.count
-    page = params[:page].to_i || 1
+    page = params[:page] || 1
     
-    @events = @events.page(page).per(10)
+    @events = Kaminari.paginate_array(@events).page(page.to_i).per(10)
     
     respond_to do |format|
           format.html 
