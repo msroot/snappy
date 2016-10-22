@@ -21,8 +21,9 @@ class Location < ApplicationRecord
   # Athens [37.9543593,23.7028389]
   # Pacha [41.97577,21.408733]
   # Location.within(5, :units => :kms, :origin => [41.97577,21.408733])                 
-  def self.find_within origin= []
-    Location.within(20, :units => :kms, :origin => origin)
+  def self.find_within origin= [], radius = nil
+    radius = 20 if radius.nil?
+    Location.within(radius.to_i, :units => :kms, :origin => origin)
   end
 
   def lat_long

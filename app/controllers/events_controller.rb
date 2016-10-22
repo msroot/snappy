@@ -45,8 +45,9 @@
       # http://localhost:3000/events?location=37.9543975,23.7027993
       # http://localhost:3000/events?location=41.97577,21.408733&for_date=2016-09-02
       
-      # Location.find_within([41.97577,21.408733])
-      location_ids = Location.find_within(location).pluck(:id)
+      radius = params[:radius] || 20
+      # Location.find_within([41.97577,21.408733], 20)
+      location_ids = Location.find_within(location, radius).pluck(:id)
       
       @events = @events.select {|e| 
         e.place && e.place.location && location_ids.include?(e.place.location.id)
