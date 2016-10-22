@@ -43,7 +43,7 @@
     if params[:location]
       location = params[:location].split(",")
       # http://localhost:3000/events?location=37.9543975,23.7027993
-      # http://localhost:3000/events?location=41.97577,21.408733&for_date=2016-09-02
+      # http://localhost:3000/events?location=41.97577,21.408733&radius=50
       
       radius = params[:radius] || 20
       # Location.find_within([41.97577,21.408733], 20)
