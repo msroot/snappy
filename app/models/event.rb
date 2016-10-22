@@ -52,6 +52,24 @@ class Event < ApplicationRecord
     Event.where('end_time < ?', Time.now.beginning_of_month).destroy_all
     Event.where('start_time < ?', Time.now.beginning_of_month).destroy_all
   end
+
+
+
+  def as_json_with_associations
+    json = self.as_json
+    json.merge!(page: self.page.as_json.merge!(
+      categories: self.page.categories.as_json )
+    )
+    
+    if self.place.present?
+      json_place =   self.place.as_json
+      json_place.merge!(location: place.location.as_json) if self.place.location
+      json.merge!(place: json_place)
+    end
+    
+    json
+  end
+
   
   private
   def date_for_humans date

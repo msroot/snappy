@@ -1,2 +1,5 @@
-json.extract! event, :id, :description, :name, :start_time, :end_time, :page_id, :cover_url, :fb_id, :created_at, :updated_at
-json.url event_url(event, format: :json)
+json.extract! event, :id,  :name, :description, :start_time, :end_time, :cover_url, :fb_id, :place
+
+# if event.place.location.present?
+# 	json.location event.place.location
+# end

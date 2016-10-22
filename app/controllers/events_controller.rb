@@ -65,6 +65,13 @@
     #     }
     
     @date_is_today = @date.to_date == Time.now.to_date
+    
+    respond_to do |format|
+          format.html 
+          format.json { render json: @events.map(&:as_json_with_associations)}
+        end
+        
+        
   end
 
   # GET /events/1
