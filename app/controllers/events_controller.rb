@@ -65,11 +65,9 @@
     #     }
     
     @date_is_today = @date.to_date == Time.now.to_date
-
-
-    response.headers['events_count'] = @events.count
-
+    response.headers['X-Collection-Count'] = @events.count
     page = params[:page].to_i || 1
+    
     @events = @events.page(page).per(10)
     
     respond_to do |format|
