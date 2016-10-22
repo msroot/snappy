@@ -25,6 +25,6 @@
 <%= render partial: "events/list", locals: { events: @page.events } %>
 <% end %>
 
-<hr /><%= link_to 'Edit', edit_page_path(@page), class: "btn btn-secondary" %>
+<hr />
 <%= link_to 'Back', pages_path, class: "btn btn-secondary" %>
 <%= link_to 'Import Events', import_page_path(@page), class: "btn btn-secondary" %>

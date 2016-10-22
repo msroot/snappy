@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   # devise_for :users
   
-  # require 'sidekiq/web'
-  # mount Sidekiq::Web => '/sidekiq'
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   
-  resources :pages do
+  resources :pages, except: [:edit, :destroy, :update] do
     member do
       get 'import'
     end

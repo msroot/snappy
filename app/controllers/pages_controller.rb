@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy, :import]
+  before_action :set_page, only: [:show, :import]
 
   # GET /pages
   def import
@@ -8,8 +8,8 @@ class PagesController < ApplicationController
   end
 
   def import_all
-    Page.all.map(&:import)
-    redirect_to pages_path, notice: "Events from #{Page.count} Pages imported" 
+    ImportEventsJob.perform_later(Page.all.to_ary)
+    redirect_to pages_path, notice: "Start Importing Events from #{Page.count} pages" 
   end
   
   # GET /pages
@@ -28,9 +28,6 @@ class PagesController < ApplicationController
     @page = Page.new
   end
 
-  # GET /pages/1/edit
-  def edit
-  end
 
   # POST /pages
   def create
@@ -68,20 +65,20 @@ class PagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /pages/1
-  def update
-    if @page.update(page_params)
-      redirect_to @page, notice: 'Page was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /pages/1
-  def destroy
-    @page.destroy
-    redirect_to pages_url, notice: 'Page was successfully destroyed.'
-  end
+  # # PATCH/PUT /pages/1
+  # def update
+  #   if @page.update(page_params)
+  #     redirect_to @page, notice: 'Page was successfully updated.'
+  #   else
+  #     render :edit
+  #   end
+  # end
+  #
+  # # DELETE /pages/1
+  # def destroy
+  #   @page.destroy
+  #   redirect_to pages_url, notice: 'Page was successfully destroyed.'
+  # end
 
   private
   # Use callbacks to share common setup or constraints between actions.
