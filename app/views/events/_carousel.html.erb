@@ -14,7 +14,7 @@
 			</div>				
 			
 			<div class="carousel-caption">
-				<p><%= "#{e.name} (#{e.place.name})"%></p>
+				<p><%= "#{e.name rescue ''} (#{e.place.name rescue ''})"%></p>
 			</div>
 			<% end %>
 		</div>
