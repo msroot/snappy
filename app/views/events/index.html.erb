@@ -55,9 +55,9 @@ title: events.first(5).pluck(:name).join(" | ")  do %>
 
 $( document ).ready(function() {
 	<%unless params[:location]%>
-	<% content_for(:body_style){ "display: none;" } %>
-	$("#loader-wrapper").fadeIn("fast");
-	geoFindMe();
+	// <% content_for(:body_style){ "display: none;" } %>
+	// $("#loader-wrapper").fadeIn("fast");
+	// geoFindMe();
 <%end%>
 });
 
