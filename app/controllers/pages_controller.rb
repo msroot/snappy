@@ -32,7 +32,7 @@ class PagesController < ApplicationController
   # POST /pages
   def create
     token = ENV['FB_TOKEN'] || fail('No facebook token set')
-    origin_url = page_params[:origin_url].gsub('/pg/', '')
+    origin_url = page_params[:origin_url].gsub('/pg/', '/')
     origin_url = origin_url.split("/")[3].strip
     url = "https://graph.facebook.com/v2.7/#{origin_url}/?fields=category_list,name&access_token=#{token}"
     
