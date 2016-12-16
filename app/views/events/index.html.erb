@@ -5,7 +5,7 @@
 
 <%#= render partial: "events/carousel", locals: { events: @events.shuffle.first(10) } %>
 
-<!-- <%= month_calendar events: @calendar do |date, events| %>
+<%= month_calendar events: @calendar do |date, events| %>
 <% current_date =  date == @today%>
 <% current_date_style =  current_date ?  "success" : "secondary"%>
 <% current_date_span = current_date ?  "white_success" : ""%>
@@ -22,7 +22,7 @@ title: events.first(5).pluck(:name).join(" | ")  do %>
 	  <span class="tag tag-success <%= current_date_span %> "><%= events.size %></span>
   <%end%>
   <%end%>
-<% end %> -->
+<% end %>
 
 
 <br />
