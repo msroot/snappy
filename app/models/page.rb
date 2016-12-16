@@ -57,7 +57,7 @@ class Page < ApplicationRecord
         next
       end
       
-      logger.debug "Importing #{e.name}"
+      logger.debug "Importing #{event.name}"
       
       # events must have start but not end
       # next if Chronic.parse(event.end_time) < Time.now.beginning_of_month
