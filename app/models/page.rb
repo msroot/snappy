@@ -33,17 +33,32 @@ class Page < ApplicationRecord
 
   # Page.all.map(&:import)
   def import
+    
     token = ENV['FB_TOKEN'] || fail('No facebook token set')
     url = "https://graph.facebook.com/v2.7/#{fb_id}/events?fields=end_time,start_time,place,id,description,name,cover&access_token=#{token}"
     
+    logger.debug "Importing #{name}"
+      
     uri = URI(url)
     response = Net::HTTP.get(uri)
     object = JSON.parse(response, object_class: OpenStruct)
 
-
+    logger.debug "Found  #{object.data.size rescue 0} events"
+    
     object.data.map do |event|
-      next if self.events.where(fb_id: event.id).present?
-      next if Chronic.parse(event.start_time) < Time.now.beginning_of_month
+       if self.events.where(fb_id: event.id).present?
+         logger.debug "Skipping: Event imported"
+         next
+       end
+       
+      
+      if Chronic.parse(event.start_time) < Time.now.beginning_of_month 
+        logger.debug "Skipping: Old event"
+        next
+      end
+      
+      logger.debug "Importing #{e.name}"
+      
       # events must have start but not end
       # next if Chronic.parse(event.end_time) < Time.now.beginning_of_month
 
